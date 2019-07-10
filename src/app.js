@@ -22,7 +22,7 @@ app.use('/signup', signUpRouter);
 app.use('/login', authRouter);
 app.use('/homepage', homepageRouter);
 app.use('/album/:album_id', albumsRouter);
-app.use('/image/:image_id', imagesRouter);
+app.use('/:image_id', imagesRouter);
 app.use('/edit/:image_id', editRouter);
 
 app.use(function errorHandler(error, req, res, next) {

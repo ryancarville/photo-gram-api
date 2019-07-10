@@ -4,4 +4,6 @@ const ImagesService = require('./images-service');
 const imagesRouter = express.Router();
 const jsonBodyParser = express.json();
 
+imagesRouter.get('/');
+
 module.exports = imagesRouter;
