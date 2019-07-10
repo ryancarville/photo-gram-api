@@ -11,7 +11,10 @@
 		"deploy": "git push heroku master"
 	},
 	"keywords": [],
-	"author": "",
+	"engines": {
+		"node": "10.15.3"
+	},
+	"author": "Ryan Carville",
 	"license": "ISC",
 	"dependencies": {
 		"cors": "^2.8.5",
