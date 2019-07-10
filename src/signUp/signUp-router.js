@@ -4,7 +4,7 @@ const SignUpService = require('./signUp-service');
 const signUpRouter = express.Router();
 const jsonBodyParser = express.json();
 
-signUpRouter.post('/', jsonBodyParser, (req, res, next) => {
+signUpRouter.get('/', jsonBodyParser, (req, res, next) => {
 	res.json({ ok: true });
 	// const { full_name, user_name, email, password, nickname } = req.body;
 
