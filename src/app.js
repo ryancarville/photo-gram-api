@@ -21,12 +21,12 @@ app.use(helemt());
 app.get('/api/*', (req, res) => {
 	res.json({ ok: true });
 });
-app.use('/signup', signUpRouter);
-app.use('/login', authRouter);
-app.use('/homepage', homepageRouter);
-app.use('/album/:album_id', albumsRouter);
-app.use('/image/:image_id', imagesRouter);
-app.use('/edit/:image_id', editRouter);
+app.get('/signup', signUpRouter);
+app.get('/login', authRouter);
+app.get('/homepage', homepageRouter);
+app.get('/album/:album_id', albumsRouter);
+app.get('/image/:image_id', imagesRouter);
+app.get('/edit/:image_id', editRouter);
 
 app.use(function errorHandler(error, req, res, next) {
 	let response;
