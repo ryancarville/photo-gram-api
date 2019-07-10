@@ -4,7 +4,8 @@ const morgan = require('morgan');
 const cors = require('cors');
 const helemt = require('helmet');
 const { NODE_ENV } = require('./config');
-
+const authRouter = require('./auth/auth-router');
+const usersRouter = require('./users/users-router');
 const app = express();
 
 const morganOption = NODE_ENV === 'production' ? 'tiny' : 'common';
@@ -15,6 +16,8 @@ app.use(helemt());
 app.get('/api/*', (req, res) => {
 	res.json({ ok: true });
 });
+app.use('/api/login', authRouter);
+app.use('/api/users', usersRouter);
 
 app.use(function errorHandler(error, req, res, next) {
 	let response;
