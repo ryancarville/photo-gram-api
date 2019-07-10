@@ -5,7 +5,7 @@ const signUpRouter = express.Router();
 const jsonBodyParser = express.json();
 
 signUpRouter.post('/', jsonBodyParser, (req, res, next) => {
-	return res.json({ ok: 'signup route' });
+	res.json({ ok: true });
 	// const { full_name, user_name, email, password, nickname } = req.body;
 
 	// for (const field of ['full_name', 'user_name', 'email', 'password'])
