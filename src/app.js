@@ -18,9 +18,6 @@ app.use(morgan(morganOption));
 app.use(cors());
 app.use(helemt());
 
-app.get('/api/*', (req, res) => {
-	res.json({ ok: true });
-});
 app.use('/signup', signUpRouter);
 app.use('/login', authRouter);
 app.use('/homepage', homepageRouter);
