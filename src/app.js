@@ -21,7 +21,7 @@ app.use(helemt());
 app.get('/api/*', (req, res) => {
 	res.json({ ok: true });
 });
-app.get('/signup', signUpRouter);
+app.use('/signup', signUpRouter);
 app.get('/login', authRouter);
 app.get('/homepage', homepageRouter);
 app.get('/album/:album_id', albumsRouter);
