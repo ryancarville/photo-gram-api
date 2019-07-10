@@ -4,8 +4,8 @@ const morgan = require('morgan');
 const cors = require('cors');
 const helemt = require('helmet');
 const { NODE_ENV } = require('./config');
+const signUpRouter = require('./signUp/signUp-router');
 const authRouter = require('./auth/auth-router');
-const usersRouter = require('./users/users-router');
 const homepageRouter = require('./homepage/homepage-router');
 const albumsRouter = require('./albums/albums-router');
 const imagesRouter = require('./images/images-router');
@@ -15,18 +15,18 @@ const app = express();
 
 const morganOption = NODE_ENV === 'production' ? 'tiny' : 'common';
 app.use(morgan(morganOption));
-app.use(cors({ origin: CLIENT_ORIGIN }));
+app.use(cors());
 app.use(helemt());
 
 app.get('/api/*', (req, res) => {
 	res.json({ ok: true });
 });
+app.use('/signup', signUpRouter);
 app.use('/login', authRouter);
-app.use('/:users', usersRouter);
-app.use('/:users/homepage', homepageRouter);
-app.use('/:users/album/:album_id', albumsRouter);
-app.use('/:users/image/:image_id', imagesRouter);
-app.use('/:users/edit/:image_id', editRouter);
+app.use('/homepage', homepageRouter);
+app.use('/album/:album_id', albumsRouter);
+app.use('/image/:image_id', imagesRouter);
+app.use('/edit/:image_id', editRouter);
 
 app.use(function errorHandler(error, req, res, next) {
 	let response;

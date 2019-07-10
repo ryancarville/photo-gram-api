@@ -7,29 +7,30 @@ photoGram_users
 RESTART IDENTITY CASCADE;
 
 INSERT INTO photoGram_users
-    (full_name, user_name, email, password)
+    (full_name, user_name, email, password, profile_img_url)
 VALUES
-    ('Ryan Carville', 'RCarville', 'ryancarville@gmail.com', '1!Aa2@Bb3#Cc'),
-    ('Zeenath Khan', 'zeenyK', 'zkhan@gmail.com', '0)Pp9(Oo8*Ii'),
-    ('Sam Smith', '', 'sSmith@yahoo.com', '4$Rr5%Tt6^Yy');
+    ('Ryan Carville', 'RCarville', 'ryancarville@gmail.com', '1!Aa2@Bb3#Cc', 'http://jdeokjwodnd.com'),
+    ('Zeenath Khan', 'zeenyK', 'zkhan@gmail.com', '0)Pp9(Oo8*Ii', 'http://jdeokjwodnd.com'),
+    ('Sam Smith', '', 'sSmith@yahoo.com', '4$Rr5%Tt6^Yy','http://jdeokjwodnd.com');
 
-INSERT INTO photoGram_images
-    (imgUrl, tags, album_id, caption,)
-VALUES
-    ('http://jdeokjwodnd.com', 'animal,dog', 1,
-    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non. Adipisci, pariatur. Molestiae, libero esse hic adipisci autem neque?'),
-    ('http://wsdwdwwddw.com', '', 2,
-    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non. Adipisci, pariatur. Molestiae, libero esse hic adipisci autem neque?'),
-    ('http://jdeokjwodnd.com', 'animal,dog', 1,
-    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non. Adipisci, pariatur. Molestiae, libero esse hic adipisci autem neque?'),
-    ('http://wsdwdwwddw.com', '', 2,
-    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non. Adipisci, pariatur. Molestiae, libero esse hic adipisci autem neque?');
 
 INSERT INTO photoGram_albums
-    (album_name)
+    (album_name, img_url)
 VALUES
-    ('dogs'),
-    ('cats'),
-    ('random');
+    ('dogs','http://wsdwdwwddw.com'),
+    ('cats', 'http://wsdwdwwddw.com'),
+    ('random', 'http://wsdwdwwddw.com');
+
+INSERT INTO photoGram_images
+    (user_id, img_url, album_id, tags, caption)
+VALUES
+    (1, 'http://jdeokjwodnd.com', 1, 'animal,dog', 
+    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non. Adipisci, pariatur. Molestiae, libero esse hic adipisci autem neque?'),
+    (2, 'http://wsdwdwwddw.com', 2, '', 
+    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non. Adipisci, pariatur. Molestiae, libero esse hic adipisci autem neque?'),
+    (2, 'http://jdeokjwodnd.com', 1, 'animal,dog', 
+    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non. Adipisci, pariatur. Molestiae, libero esse hic adipisci autem neque?'),
+    (3, 'http://wsdwdwwddw.com', 2, '',
+    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non. Adipisci, pariatur. Molestiae, libero esse hic adipisci autem neque?');
 
 COMMIT;
