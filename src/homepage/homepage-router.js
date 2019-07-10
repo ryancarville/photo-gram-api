@@ -7,7 +7,9 @@ const jsonBodyParser = express.json();
 homepageRouter.get('/', (req, res, next) => {
 	const { user_id } = req.body;
 	const db = req.app.get('db');
-	HomepageService.getUserInfo(db, user_id).then(user => res.json(user));
+	HomepageService.getUserInfo(db, user_id).then(user =>
+		res.json({ ok: 'test' })
+	);
 	HomepageService.getAllImages(db, user_id).then(images => res.json(images));
 	HomepageService.getAllAlbums(db, user_id).then(albums => res.json(albums));
 });
