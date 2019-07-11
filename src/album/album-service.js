@@ -1,9 +1,9 @@
-const EditService = {
-	getImageById(db, userId, imageId) {
+const AlbumsService = {
+	getAllImages(db, userId, albumId) {
 		return db
-			.select('img_url', 'caption', 'tags', 'album_id', 'date_created')
+			.select('img_url', 'caption', 'tags', 'date_created')
 			.from('photoGram_images')
-			.where({ userId } && { imageId });
+			.where({ userId } && { albumId });
 	},
 	serializeImage(image) {
 		return {
@@ -17,4 +17,3 @@ const EditService = {
 		};
 	}
 };
-module.exports = EditService;

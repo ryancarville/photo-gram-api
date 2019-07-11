@@ -7,8 +7,8 @@ const { NODE_ENV } = require('./config');
 const signUpRouter = require('./signUp/signUp-router');
 const authRouter = require('./auth/auth-router');
 const homepageRouter = require('./homepage/homepage-router');
-const albumsRouter = require('./albums/albums-router');
-const imagesRouter = require('./images/images-router');
+const albumRouter = require('./album/album-router');
+const imagePageRouter = require('./images/imagePage-routerrouter');
 const editRouter = require('./edit/edit-router');
 
 const app = express();
@@ -21,9 +21,9 @@ app.use(helemt());
 app.use('/signup', signUpRouter);
 app.use('/login', authRouter);
 app.use('/homepage', homepageRouter);
-app.use('/album/:album_id', albumsRouter);
-app.use('/:image_id', imagesRouter);
-app.use('/edit/:image_id', editRouter);
+app.use('/:album_id', albumRouter);
+app.use('/:image_id', imagePageRouter);
+app.use('/edit', editRouter);
 
 app.use(function errorHandler(error, req, res, next) {
 	let response;

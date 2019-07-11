@@ -1,4 +1,4 @@
-const EditService = {
+const ImagePageService = {
 	getImageById(db, userId, imageId) {
 		return db
 			.select('img_url', 'caption', 'tags', 'album_id', 'date_created')
@@ -17,4 +17,4 @@ const EditService = {
 		};
 	}
 };
-module.exports = EditService;
+module.exports = ImagePageService;
