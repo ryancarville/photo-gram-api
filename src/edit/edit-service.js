@@ -1,3 +1,5 @@
+const xss = require('xss');
+
 const EditService = {
 	getImageById(db, userId, imageId) {
 		return db
@@ -8,10 +10,10 @@ const EditService = {
 	serializeImage(image) {
 		return {
 			id: image.id,
-			user_id: image.user_id,
-			img_url: image.img_url,
-			caption: image.caption,
-			tags: image.tags,
+			user_id: xss(image.user_id),
+			img_url: xss(image.img_url),
+			caption: xss(image.caption),
+			tags: xss(image.tags),
 			album_id: image.album_id || null,
 			date_created: image.date_created
 		};

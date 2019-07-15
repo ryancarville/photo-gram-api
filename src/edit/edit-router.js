@@ -12,7 +12,7 @@ editRouter.get('/:image_id', (req, res, next) => {
 		.catch(next);
 });
 
-// editRouter.post('/', jsonBodyParser, (req, res, next) => {
+// editRouter.patch('/', jsonBodyParser, (req, res, next) => {
 // 	const { caption, date_created, tags, album_id } = req.body;
 // 	const updatedImage = { caption, date_created, tags, album_id };
 

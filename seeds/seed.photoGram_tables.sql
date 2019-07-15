@@ -33,4 +33,10 @@ VALUES
     (3, 'http://wsdwdwwddw.com', 2, '',
     'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non. Adipisci, pariatur. Molestiae, libero esse hic adipisci autem neque?');
 
+INSERT INTO photoGram_landingPage
+    (mobile_Img_Url, desktop_Img_Url)
+VALUES
+    ('http://beardystudios.com/Bloc_Capstone/photoGram/images/landingPage-example.png',
+    'http://beardystudios.com/Bloc_Capstone/photoGram/images/desktop-example.png');
+    
 COMMIT;

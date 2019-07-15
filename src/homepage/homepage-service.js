@@ -1,3 +1,5 @@
+const xss = require('xss');
+
 const HomepageService = {
 	getUserInfo(db, user_id) {
 		return db
@@ -17,12 +19,12 @@ const HomepageService = {
 			.select('album_name', 'img_url')
 			.where({ user_id });
 	},
-	serialzeUser(user) {
+	serializeUser(user) {
 		return {
 			id: user.id,
-			full_name: user.full_name,
-			user_name: user.user_name,
-			email: user.email,
+			full_name: xss(user.full_name),
+			user_name: xss(user.user_name),
+			email: xss(user.email),
 			password: user.password,
 			date_created: user.date_created
 		};
@@ -30,10 +32,10 @@ const HomepageService = {
 	serializeImages(image) {
 		return {
 			id: image.id,
-			user_id: image.user_id,
-			img_url: image.img_url,
-			caption: image.caption,
-			tags: image.tags,
+			user_id: xss(image.user_id),
+			img_url: xss(image.img_url),
+			caption: xss(image.caption),
+			tags: xss(image.tags),
 			album_id: image.album_id || null,
 			date_created: image.date_created
 		};
@@ -41,9 +43,11 @@ const HomepageService = {
 	serializeAlbum(album) {
 		return {
 			id: album.id,
-			user_id: album.user_id,
-			album_name: album.album_name,
-			img_url: album.img_url
+			user_id: xss(album.user_id),
+			album_name: xss(album.album_name),
+			img_url: xss(album.img_url)
 		};
 	}
 };
+
+module.exports = HomepageService;
