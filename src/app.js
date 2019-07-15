@@ -2,7 +2,7 @@ require('dotenv').config;
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
-const helemt = require('helmet');
+const helmet = require('helmet');
 const { NODE_ENV } = require('./config');
 const landingPageRouter = require('./landingPage/landingPage-router');
 const signUpRouter = require('./signUp/signUp-router');
@@ -18,14 +18,14 @@ const app = express();
 const morganOption = NODE_ENV === 'production' ? 'tiny' : 'common';
 app.use(morgan(morganOption));
 app.use(cors());
-app.use(helemt());
+app.use(helmet());
 
 app.use('/', landingPageRouter);
 app.use('/signup', signUpRouter);
 app.use('/login', authRouter);
 app.use('/homepage', homepageRouter);
-app.use('/:album_id', albumRouter);
-app.use('/:image_id', imagePageRouter);
+app.use('/albums', albumRouter);
+app.use('/images', imagePageRouter);
 app.use('/edit', editRouter);
 app.use('/upload', uploadRouter);
 

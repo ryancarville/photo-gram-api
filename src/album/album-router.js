@@ -4,7 +4,7 @@ const AlubmService = require('./album-service');
 const albumRouter = express.Router();
 const jsonBodyParser = express.json();
 
-albumRouter.get('/', (req, res, next) => {
+albumRouter.get('/:album_id', (req, res, next) => {
 	const db = req.app.get('db');
 	const { user_id, album_id } = req.body;
 

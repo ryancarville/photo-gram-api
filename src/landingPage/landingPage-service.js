@@ -1,8 +1,9 @@
 const LandingPageService = {
 	getLandingPage(db) {
-		return db
-			.select('desktop_Img_Url', 'mobile_Img_Url')
-			.from('photogram_landingpage');
+		return db('photogram_landingpage').select(
+			'desktop_img_url',
+			' mobile_img_url'
+		);
 	}
 };
 

@@ -1,11 +1,12 @@
 const express = require('express');
-const LandignPageService = require('./landingPage-service');
+const LandingPageService = require('./landingPage-service');
 const landingPageRouter = express.Router();
 
 landingPageRouter.get('/', (req, res, next) => {
-	LandignPageService.getLandingPage(req.app.get('db'))
-		.then(page => {
-			res.json(page);
+	const db = req.app.get('db');
+	LandingPageService.getLandingPage(db)
+		.then(lp => {
+			res.json(lp);
 		})
 		.catch(next);
 });
