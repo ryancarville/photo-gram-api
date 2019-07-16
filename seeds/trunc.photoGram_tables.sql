@@ -1,0 +1,3 @@
+TRUNCATE photogram_users;
+TRUNCATE photogram_images;
+TRUNCATE photogram_albums;
