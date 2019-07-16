@@ -3,29 +3,30 @@ const xss = require('xss');
 const HomepageService = {
 	getUserInfo(db, user_id) {
 		return db
-			.from('photoGram_users')
-			.select('full_name', 'profile_img_url')
-			.where({ user_id });
+			.from('photogram_users AS userInfo')
+			.select('id', 'full_name', 'profile_img_url')
+			.where({ id: user_id });
 	},
 	getAllImages(db, user_id) {
 		return db
-			.from('photoGram_images AS images')
+			.from('photogram_images')
 			.select('img_url', 'caption', 'album_id', 'tags', 'date_created')
 			.where({ user_id });
 	},
 	getAllAlbums(db, user_id) {
 		return db
-			.from('photoGram_albums AS albums')
-			.select('album_name', 'img_url')
+			.from('photogram_albums AS albums')
+			.select('id', 'album_name', 'img_url')
 			.where({ user_id });
 	},
 	serializeUser(user) {
 		return {
 			id: user.id,
-			full_name: xss(user.full_name),
-			user_name: xss(user.user_name),
-			email: xss(user.email),
+			full_name: user.full_name,
+			user_name: user.user_name,
+			email: user.email,
 			password: user.password,
+			profile_img_url: xss(user.profile_img_url),
 			date_created: user.date_created
 		};
 	},
@@ -40,7 +41,7 @@ const HomepageService = {
 			date_created: image.date_created
 		};
 	},
-	serializeAlbum(album) {
+	serializeAlbums(album) {
 		return {
 			id: album.id,
 			user_id: xss(album.user_id),

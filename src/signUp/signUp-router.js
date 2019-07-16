@@ -2,9 +2,8 @@ const express = require('express');
 const path = require('path');
 const SignUpService = require('./signUp-service');
 const signUpRouter = express.Router();
-const jsonBodyParser = express.json();
 
-signUpRouter.post('/', jsonBodyParser, (req, res, next) => {
+signUpRouter.post('/', (req, res, next) => {
 	const { full_name, user_name, email, password } = req.body;
 
 	for (const field of ['full_name', 'user_name', 'email', 'password'])
