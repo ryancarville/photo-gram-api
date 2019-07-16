@@ -24,7 +24,7 @@ app.use(jsonBodyParse);
 //app.use('/', landingPageRouter);
 app.use('/signup', signUpRouter);
 app.use('/login', authRouter);
-app.use('/', homepageRouter);
+app.use('/users', homepageRouter);
 app.use('/albums', albumRouter);
 app.use('/images', imagePageRouter);
 app.use('/edit', editRouter);

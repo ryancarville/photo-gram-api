@@ -9,28 +9,28 @@ RESTART IDENTITY CASCADE;
 INSERT INTO photoGram_users
     (full_name, user_name, email, password, profile_img_url)
 VALUES
-    ('Ryan Carville', 'RCarville', 'ryancarville@gmail.com', '1!Aa2@Bb3#Cc', 'http://jdeokjwodnd.com'),
-    ('Zeenath Khan', 'zeenyK', 'zkhan@gmail.com', '0)Pp9(Oo8*Ii', 'http://jdeokjwodnd.com'),
-    ('Sam Smith', '', 'sSmith@yahoo.com', '4$Rr5%Tt6^Yy','http://jdeokjwodnd.com');
+    ('Ryan Carville', 'RCarville', 'ryancarville@gmail.com', '1!Aa2@Bb3#Cc', 'http://beardystudios.com/ZURICH_SITE/images/photography/food/lunch/02.jpg'),
+    ('Zeenath Khan', 'zeenyK', 'zkhan@gmail.com', '0)Pp9(Oo8*Ii', 'http://beardystudios.com/ZURICH_SITE/images/photography/food/lunch/03.jpg'),
+    ('Sam Smith', '', 'sSmith@yahoo.com', '4$Rr5%Tt6^Yy','http://beardystudios.com/ZURICH_SITE/images/photography/food/lunch/05.jpg');
 
 
 INSERT INTO photoGram_albums
     (album_name, img_url)
 VALUES
-    ('dogs','http://wsdwdwwddw.com'),
-    ('cats', 'http://wsdwdwwddw.com'),
-    ('random', 'http://wsdwdwwddw.com');
+    ('dogs','http://beardystudios.com/ZURICH_SITE/images/photography/food/lunch/02.jpg'),
+    ('cats', 'http://beardystudios.com/ZURICH_SITE/images/photography/food/lunch/05.jpg'),
+    ('random', 'http://beardystudios.com/ZURICH_SITE/images/photography/food/lunch/03.jpg');
 
 INSERT INTO photoGram_images
     (user_id, img_url, album_id, tags, caption)
 VALUES
-    (1, 'http://jdeokjwodnd.com', 1, 'animal,dog', 
+    (1, 'http://beardystudios.com/ZURICH_SITE/images/photography/food/lunch/02.jpg', 1, 'animal,dog', 
     'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non. Adipisci, pariatur. Molestiae, libero esse hic adipisci autem neque?'),
-    (2, 'http://wsdwdwwddw.com', 2, '', 
+    (2, 'http://beardystudios.com/ZURICH_SITE/images/photography/food/lunch/04.jpg', 2, '', 
     'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non. Adipisci, pariatur. Molestiae, libero esse hic adipisci autem neque?'),
-    (2, 'http://jdeokjwodnd.com', 1, 'animal,dog', 
+    (2, 'http://beardystudios.com/ZURICH_SITE/images/photography/food/lunch/06.jpg', 1, 'animal,dog', 
     'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non. Adipisci, pariatur. Molestiae, libero esse hic adipisci autem neque?'),
-    (3, 'http://wsdwdwwddw.com', 2, '',
+    (3, 'http://beardystudios.com/ZURICH_SITE/images/photography/food/lunch/03.jpg', 2, '',
     'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non. Adipisci, pariatur. Molestiae, libero esse hic adipisci autem neque?');
 
 INSERT INTO photoGram_landingPage
