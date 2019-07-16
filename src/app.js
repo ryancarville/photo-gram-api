@@ -21,7 +21,7 @@ app.use(morgan(morganOption));
 app.use(cors());
 app.use(helmet());
 app.use(jsonBodyParse);
-//app.use('/', landingPageRouter);
+app.use('/', landingPageRouter);
 app.use('/signup', signUpRouter);
 app.use('/login', authRouter);
 app.use('/users', homepageRouter);
