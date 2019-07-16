@@ -10,7 +10,7 @@ homepageRouter.get('/:user_id', (req, res, next) => {
 
 	HomepageService.getUserInfo(db, user_id)
 		.then(user => {
-			photoGramData.user = HomepageService.serializeUser(user);
+			photoGramData.user = user;
 		})
 		.then(
 			HomepageService.getAllImages(db, user_id).then(images => {

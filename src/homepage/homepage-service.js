@@ -10,7 +10,7 @@ const HomepageService = {
 	getAllImages(db, user_id) {
 		return db
 			.from('photogram_images')
-			.select('img_url', 'caption', 'album_id', 'tags', 'date_created')
+			.select('id', 'img_url', 'caption', 'album_id', 'tags', 'date_created')
 			.where({ user_id });
 	},
 	getAllAlbums(db, user_id) {
@@ -26,7 +26,7 @@ const HomepageService = {
 			user_name: user.user_name,
 			email: user.email,
 			password: user.password,
-			profile_img_url: xss(user.profile_img_url),
+			profile_img_url: user.profile_img_url,
 			date_created: user.date_created
 		};
 	},
