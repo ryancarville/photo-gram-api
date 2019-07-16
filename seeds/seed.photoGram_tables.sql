@@ -25,12 +25,14 @@ INSERT INTO photoGram_images
     (user_id, img_url, album_id, tags, caption)
 VALUES
     (1, 'http://beardystudios.com/ZURICH_SITE/images/photography/food/lunch/02.jpg', 1, 'animal,dog', 
-    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non. Adipisci, pariatur. Molestiae, libero esse hic adipisci autem neque?'),
+    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi,?'),
+    (1, 'http://beardystudios.com/ZURICH_SITE/images/photography/food/lunch/01.jpg', 1, 'animal,dog', 
+    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi,?'),
     (2, 'http://beardystudios.com/ZURICH_SITE/images/photography/food/lunch/04.jpg', 2, '', 
     'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non. Adipisci, pariatur. Molestiae, libero esse hic adipisci autem neque?'),
     (2, 'http://beardystudios.com/ZURICH_SITE/images/photography/food/lunch/06.jpg', 1, 'animal,dog', 
     'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non. Adipisci, pariatur. Molestiae, libero esse hic adipisci autem neque?'),
-    (3, 'http://beardystudios.com/ZURICH_SITE/images/photography/food/lunch/03.jpg', 2, '',
+    (1, 'http://beardystudios.com/ZURICH_SITE/images/photography/food/lunch/03.jpg', 2, '',
     'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non. Adipisci, pariatur. Molestiae, libero esse hic adipisci autem neque?');
 
 INSERT INTO photoGram_landingPage
