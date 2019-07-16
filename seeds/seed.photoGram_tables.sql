@@ -9,9 +9,9 @@ RESTART IDENTITY CASCADE;
 INSERT INTO photoGram_users
     (full_name, user_name, email, password, profile_img_url)
 VALUES
-    ('Ryan Carville', 'RCarville', 'ryancarville@gmail.com', '1!Aa2@Bb3#Cc', 'http://beardystudios.com/ZURICH_SITE/images/photography/food/lunch/02.jpg'),
-    ('Zeenath Khan', 'zeenyK', 'zkhan@gmail.com', '0)Pp9(Oo8*Ii', 'http://beardystudios.com/ZURICH_SITE/images/photography/food/lunch/03.jpg'),
-    ('Sam Smith', '', 'sSmith@yahoo.com', '4$Rr5%Tt6^Yy','http://beardystudios.com/ZURICH_SITE/images/photography/food/lunch/05.jpg');
+    ('Ryan Carville', 'RCarville', 'ryancarville@gmail.com', '$2y$12$L4DA4P288Fpuq9DD6IwBmOpxv9SwwgC9PUWM.nmNzCDxoSRmY6P6O', 'http://beardystudios.com/ZURICH_SITE/images/photography/food/lunch/02.jpg'),
+    ('Zeenath Khan', 'zeenyK', 'zkhan@gmail.com', '$2y$12$cSGa8YDl0m26vi/.NHD5aeb5koEbRXTflIB/0fABk4i1RXecFuaZi', 'http://beardystudios.com/ZURICH_SITE/images/photography/food/lunch/03.jpg'),
+    ('Sam Smith', '', 'sSmith@yahoo.com', '$2y$12$RdsNdejBNPJepmploYK9n.tdBPhUmUkvu7ax0yQigSHJiOJBf7EUe','http://beardystudios.com/ZURICH_SITE/images/photography/food/lunch/05.jpg');
 
 
 INSERT INTO photoGram_albums
