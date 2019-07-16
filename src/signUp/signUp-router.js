@@ -5,7 +5,7 @@ const signUpRouter = express.Router();
 const jsonBodyParser = express.json();
 
 signUpRouter.post('/', jsonBodyParser, (req, res, next) => {
-	const { full_name, user_name, email, password, nickname } = req.body;
+	const { full_name, user_name, email, password } = req.body;
 
 	for (const field of ['full_name', 'user_name', 'email', 'password'])
 		if (!req.body[field])
@@ -27,7 +27,6 @@ signUpRouter.post('/', jsonBodyParser, (req, res, next) => {
 					user_name,
 					password: hashedPassword,
 					full_name,
-					nickname,
 					date_created: 'now()'
 				};
 				return SignUpService.insertUser(req.app.get('db'), newUser).then(

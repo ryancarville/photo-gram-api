@@ -4,7 +4,8 @@ const REGEX_UPPER_LOWER_NUMBER_SPECIAL = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*
 
 const SignUpService = {
 	hasUserWithUserName(db, user_name) {
-		return db('photoGram')
+		return db
+			.from('photogram_users')
 			.where({ user_name })
 			.first()
 			.then(user => !!user);
@@ -12,12 +13,12 @@ const SignUpService = {
 	insertUser(db, newUser) {
 		return db
 			.insert(newUser)
-			.into('photoGram_users')
+			.into('photogram_users')
 			.returning('*')
 			.then(([user]) => user);
 	},
 	validatePassword(password) {
-		if (password.length <= 8) {
+		if (password.length < 8) {
 			return 'Password must be at least 8 characters long.';
 		}
 		if (password.length > 72) {
@@ -39,7 +40,7 @@ const SignUpService = {
 			id: user.id,
 			full_name: xss(user.full_name),
 			user_name: xss(user.user_name),
-			nickname: xss(user.nickname),
+			password: xss(user.passsword),
 			date_created: new Date(user.date_created)
 		};
 	}
