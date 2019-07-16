@@ -15,11 +15,11 @@ VALUES
 
 
 INSERT INTO photoGram_albums
-    (album_name, img_url)
+    (album_name, img_url, user_id)
 VALUES
-    ('dogs','http://beardystudios.com/ZURICH_SITE/images/photography/food/lunch/02.jpg'),
-    ('cats', 'http://beardystudios.com/ZURICH_SITE/images/photography/food/lunch/05.jpg'),
-    ('random', 'http://beardystudios.com/ZURICH_SITE/images/photography/food/lunch/03.jpg');
+    ('dogs','http://beardystudios.com/ZURICH_SITE/images/photography/food/lunch/02.jpg', 1),
+    ('cats', 'http://beardystudios.com/ZURICH_SITE/images/photography/food/lunch/05.jpg', 1),
+    ('random', 'http://beardystudios.com/ZURICH_SITE/images/photography/food/lunch/03.jpg', 2);
 
 INSERT INTO photoGram_images
     (user_id, img_url, album_id, tags, caption)
