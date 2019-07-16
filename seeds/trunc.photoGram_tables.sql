@@ -1,3 +1,5 @@
-TRUNCATE photogram_users;
-TRUNCATE photogram_images;
-TRUNCATE photogram_albums;
+TRUNCATE
+photoGram_albums,
+photoGram_images,
+photoGram_users
+RESTART IDENTITY CASCADE;
