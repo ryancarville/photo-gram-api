@@ -1,11 +1,19 @@
 const xss = require('xss');
 
-const HomepageService = {
+const UserService = {
 	getUserInfo(db, user_id) {
 		return db
 			.from('photogram_users AS userInfo')
 			.select('id', 'full_name', 'profile_img_url')
 			.where({ id: user_id });
+	},
+	updateUserInfo(db, id, newInfo) {
+		return db
+			.into('photogram_users')
+			.where({ id })
+			.update({ profile_img_url: newInfo })
+			.returning('*')
+			.then(row => row[0]);
 	},
 	getAllImages(db, user_id) {
 		return db
@@ -15,7 +23,7 @@ const HomepageService = {
 	},
 	getAllAlbums(db, user_id) {
 		return db
-			.from('photogram_albums AS albums')
+			.from('photogram_albums')
 			.select('id', 'album_name', 'img_url')
 			.where({ user_id });
 	},
@@ -51,4 +59,4 @@ const HomepageService = {
 	}
 };
 
-module.exports = HomepageService;
+module.exports = UserService;

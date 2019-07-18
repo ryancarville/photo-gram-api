@@ -8,10 +8,9 @@ const jsonBodyParse = express.json();
 const landingPageRouter = require('./landingPage/landingPage-router');
 const signUpRouter = require('./signUp/signUp-router');
 const authRouter = require('./auth/auth-router');
-const homepageRouter = require('./homepage/homepage-router');
+const userRouter = require('./user/user-router');
 const albumRouter = require('./album/album-router');
-const imagePageRouter = require('./images/imagePage-router');
-const editRouter = require('./edit/edit-router');
+const imageRouter = require('./images/image-router');
 const uploadRouter = require('./upload/upload-router');
 
 const app = express();
@@ -24,10 +23,9 @@ app.use(jsonBodyParse);
 app.use('/', landingPageRouter);
 app.use('/signup', signUpRouter);
 app.use('/login', authRouter);
-app.use('/users', homepageRouter);
+app.use('/user', userRouter);
 app.use('/albums', albumRouter);
-app.use('/images', imagePageRouter);
-app.use('/edit', editRouter);
+app.use('/images', imageRouter);
 app.use('/upload', uploadRouter);
 
 app.use(function errorHandler(error, req, res, next) {
