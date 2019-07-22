@@ -11,7 +11,11 @@ const UserService = {
 		return db
 			.into('photogram_users')
 			.where({ id })
-			.update({ profile_img_url: newInfo })
+			.update({
+				full_name: newInfo.full_name,
+				user_name: newInfo.user_name,
+				profile_img_url: newInfo.profile_img_url
+			})
 			.returning('*')
 			.then(row => row[0]);
 	},

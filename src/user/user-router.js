@@ -33,14 +33,23 @@ userRouter
 			.catch(next);
 	})
 	.patch((req, res, next) => {
-		const { profile_img_url } = req.body;
+		const { full_name, user_name, profile_img_url } = req.body;
+		const userInfoUpdate = { full_name, user_name, profile_img_url };
 		const user_id = req.params.user_id;
 		const db = req.app.get('db');
-		UserService.updateUserInfo(db, user_id, profile_img_url)
-			.then(user => {
-				res.json(UserService.serializeUser(user));
-			})
-			.catch(next);
+		const userToUpdate = Object.entries(userInfoUpdate).filter(Boolean).length;
+		if (userToUpdate === 0) {
+			res.status(400).json({
+				error: `Request must contain at least 'full_name', 'user_name' or 'profile_img_url'`
+			});
+		} else {
+			UserService.updateUserInfo(db, user_id, userInfoUpdate)
+				.then(user => {
+					console.log(user);
+					res.status(204).json(UserService.serializeUser(user));
+				})
+				.catch(next);
+		}
 	});
 
 module.exports = userRouter;
