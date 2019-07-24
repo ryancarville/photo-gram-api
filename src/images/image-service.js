@@ -9,7 +9,8 @@ const ImageService = {
 	},
 	getImageById(db, userId, imageId) {
 		return db
-			.select('id', 'img_url', 'caption', 'tags', 'album_id', 'date_created')
+			.select('id', 'img_url', 'caption', 'tags', 'album_id')
+			.select(convert(varchar, getdate('date_created'), 1))
 			.from('photogram_images')
 			.where({ userId } && { imageId });
 	},

@@ -6,7 +6,7 @@ userRouter
 	.route('/:user_id')
 	.get((req, res, next) => {
 		let photoGramData = {};
-		const { user_id } = req.params;
+		const user_id = req.params.user_id;
 		console.log(user_id);
 		const db = req.app.get('db');
 

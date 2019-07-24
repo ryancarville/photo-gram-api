@@ -5,5 +5,5 @@ CREATE TABLE photoGram_images (
     tags TEXT,
     user_id INTEGER REFERENCES photoGram_users(id) ON DELETE CASCADE,
     album_id INTEGER REFERENCES photoGram_albums(id) ON DELETE CASCADE,
-    date_created TIMESTAMP DEFAULT now() NOT NULL
+    date_created DATE DEFAULT now() NOT NULL
 )
