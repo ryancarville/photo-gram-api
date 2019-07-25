@@ -22,13 +22,13 @@ const UserService = {
 	getAllImages(db, user_id) {
 		return db
 			.from('photogram_images')
-			.select('id', 'img_url', 'caption', 'album_id', 'tags', 'date_created')
+			.select('*')
 			.where({ user_id });
 	},
 	getAllAlbums(db, user_id) {
 		return db
 			.from('photogram_albums')
-			.select('id', 'album_name', 'img_url')
+			.select('id', 'album_name', 'img_url', 'user_id')
 			.where({ user_id });
 	},
 	serializeUser(user) {
@@ -57,7 +57,7 @@ const UserService = {
 		return {
 			id: album.id,
 			user_id: xss(album.user_id),
-			album_name: xss(album.album_name),
+			album_name: album.album_name,
 			img_url: xss(album.img_url)
 		};
 	}
