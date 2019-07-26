@@ -14,9 +14,9 @@ albumRouter
 		AlubmService.insertAlbum(db, newAlbum)
 			.then(album =>
 				res
-					.status(204)
+					.status(201)
 					.location(path.posix.join(req.originalUrl + `/${album.id}`))
-					.json(album => AlubmService.serializeAlbum(album))
+					.json(AlubmService.serializeAlbum(album))
 			)
 			.catch(next);
 	});
@@ -36,9 +36,7 @@ albumRouter
 		const { album_id } = req.params;
 		const db = req.app.get('db');
 		AlubmService.deleteAlbum(db, album_id)
-			.then(nuwRowsAffected => {
-				res.status(204).json();
-			})
+			.then(nuwRowsAffected => res.status(200).end())
 			.catch(next);
 	});
 

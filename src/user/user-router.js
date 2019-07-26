@@ -45,8 +45,7 @@ userRouter
 		} else {
 			UserService.updateUserInfo(db, user_id, userInfoUpdate)
 				.then(user => {
-					console.log(user);
-					res.status(204).json(UserService.serializeUser(user));
+					return res.status(201).json(UserService.serializeUser(user));
 				})
 				.catch(next);
 		}
