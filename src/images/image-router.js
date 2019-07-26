@@ -2,9 +2,11 @@ const path = require('path');
 const express = require('express');
 const ImageService = require('./image-service');
 const imageRouter = express.Router();
+const { requireAuth } = require('../middleware/jwt-auth');
 
 imageRouter
 	.route('/:user_id')
+	.all(requireAuth)
 	.get((req, res, next) => {
 		const user_id = req.params.user_id;
 		const db = req.app.get('db');
@@ -50,6 +52,7 @@ imageRouter
 
 imageRouter
 	.route('/:image_id')
+	.all(requireAuth)
 	.get((req, res, next) => {
 		const db = req.app.get('db');
 		const { user_id, image_id } = req.body;
