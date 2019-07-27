@@ -78,7 +78,7 @@ imageRouter
 			imageToUpdate
 		)
 			.then(nuwRowsAffected => {
-				res.status(204).json();
+				res.status(202).json(nuwRowsAffected);
 			})
 			.catch(next);
 	})
@@ -86,9 +86,7 @@ imageRouter
 		const imageId = req.params.image_id;
 		const db = req.app.get('db');
 		ImageService.deleteImage(db, imageId)
-			.then(nuwRowsAffected => {
-				res.status(204).json();
-			})
+			.then(nuwRowsAffected => res.status(202).json(nuwRowsAffected))
 			.catch(next);
 	});
 

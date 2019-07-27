@@ -36,7 +36,7 @@ albumRouter
 		const { album_id } = req.params;
 		const db = req.app.get('db');
 		AlubmService.deleteAlbum(db, album_id)
-			.then(nuwRowsAffected => res.status(200).end())
+			.then(nuwRowsAffected => res.status(202).json(nuwRowsAffected))
 			.catch(next);
 	});
 
