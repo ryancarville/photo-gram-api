@@ -9,31 +9,31 @@ RESTART IDENTITY CASCADE;
 INSERT INTO photoGram_users
     (full_name, user_name, email, password, profile_img_url)
 VALUES
-    ('Ryan Carville', 'RCarville', 'ryancarville@gmail.com', '$2y$12$L4DA4P288Fpuq9DD6IwBmOpxv9SwwgC9PUWM.nmNzCDxoSRmY6P6O', 'https://res.cloudinary.com/rcarville/image/upload/photoGram_profileImage/ozs3goqyxhkgbawldrnn'),
-    ('Zeenath Khan', 'zeenyK', 'zkhan@gmail.com', '$2y$12$cSGa8YDl0m26vi/.NHD5aeb5koEbRXTflIB/0fABk4i1RXecFuaZi', 'https://res.cloudinary.com/rcarville/image/upload/photoGram_profileImage/n1hmjhxxlbyevd05twc0'),
-    ('Sam Smith', '', 'sSmith@yahoo.com', '$2y$12$RdsNdejBNPJepmploYK9n.tdBPhUmUkvu7ax0yQigSHJiOJBf7EUe','https://res.cloudinary.com/rcarville/image/upload/photoGram_profileImage/ozs3goqyxhkgbawldrnn');
+    ('Test User', 'TestUser', 'testuser@gmail.com', '$2y$12$L4DA4P288Fpuq9DD6IwBmOpxv9SwwgC9PUWM.nmNzCDxoSRmY6P6O', 'https://res.cloudinary.com/rcarville/image/upload/photoGram_profileImage/c6rayxdccufhmcq7rjc8'),
+    ('Test User 2', 'TestUser2', 'testuser2@gmail.com', '$2y$12$6O8mcrKs5eGsgyO53ScZEu36qDNvdCglanoxefZucg1M0xQmrcmMC', 'https://res.cloudinary.com/rcarville/image/upload/photoGram_profileImage/daeg97zfdkkqjhc3jbgo');
+    
 
 
 INSERT INTO photoGram_albums
     (album_name, img_url, user_id)
 VALUES
-    ('San Fransico','https://res.cloudinary.com/rcarville/image/upload/photoGram_profileImage/naa75xtgjsldlmsisqjm', 1),
-    ('People', 'https://res.cloudinary.com/rcarville/image/upload/photoGram_profileImage/ozs3goqyxhkgbawldrnn', 1),
-    ('random', 'https://res.cloudinary.com/rcarville/image/upload/photoGram_profileImage/n1hmjhxxlbyevd05twc0', 2);
+    ('Jewlery','https://res.cloudinary.com/rcarville/image/upload/photoGram_Album_Images/r2hp55y6f0urpgnqwg0j', 1),
+    ('People', 'https://res.cloudinary.com/rcarville/image/upload/photoGram_Album_Images/x8auz5mf1r75loyritia', 1),
+    ('Food', 'https://res.cloudinary.com/rcarville/image/upload/photoGram_Album_Images/plxqbspvbdcq45kiqf2g', 2);
 
 INSERT INTO photoGram_images
     (user_id, img_url, album_id, tags, caption)
 VALUES
-    (1, 'https://res.cloudinary.com/rcarville/image/upload/photoGram_profileImage/naa75xtgjsldlmsisqjm', 1, 'animal,dog', 
-    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi,?'),
-    (1, 'https://res.cloudinary.com/rcarville/image/upload/photoGram_profileImage/ozs3goqyxhkgbawldrnn', 1, 'animal,dog', 
-    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi,?'),
-    (2, 'https://res.cloudinary.com/rcarville/image/upload/photoGram_profileImage/hhvgljlqi6obzu2313uw', 2, '', 
-    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non. Adipisci, pariatur. Molestiae, libero esse hic adipisci autem neque?'),
-    (2, 'https://res.cloudinary.com/rcarville/image/upload/photoGram_profileImage/n1hmjhxxlbyevd05twc0', 1, 'animal,dog', 
-    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non. Adipisci, pariatur. Molestiae, libero esse hic adipisci autem neque?'),
-    (1, 'https://res.cloudinary.com/rcarville/image/upload/photoGram_profileImage/tmpxrewzdqwgobfvc07r', 2, '',
-    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non. Adipisci, pariatur. Molestiae, libero esse hic adipisci autem neque?');
+    (1, 'https://res.cloudinary.com/rcarville/image/upload/photoGram_Images/d3aiqvd7ewr6q5bdcssw', 2, 'portrait', 
+    'James Wright owner of Denim'),
+    (1, 'https://res.cloudinary.com/rcarville/image/upload/photoGram_Images/a1xbcd3ehc1p0yp8mbb2', 2, 'portrait', 
+    'Billy Chang Senior Portrait'),
+    (2, 'https://res.cloudinary.com/rcarville/image/upload/photoGram_Images/a1xbcd3ehc1p0yp8mbb2', 2, '', 
+    'Some caption here'),
+    (2, 'https://res.cloudinary.com/rcarville/image/upload/photoGram_Images/a1xbcd3ehc1p0yp8mbb2', 1, 'animal,dog', 
+    'Some other caption here'),
+    (1, 'https://res.cloudinary.com/rcarville/image/upload/photoGram_Images/jx2fk8ep2nqh33fyyook', 2, 'clothing',
+    'Denim Clothing');
 
 INSERT INTO photoGram_landingPage
     (mobile_Img_Url, desktop_Img_Url)
