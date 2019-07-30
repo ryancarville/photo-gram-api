@@ -6,7 +6,6 @@ const jsonParser = express.json();
 authRouter.post('/', jsonParser, (req, res, next) => {
 	const { user_name, password } = req.body;
 	const loginUser = { user_name, password };
-	console.log(loginUser);
 	for (const [key, value] of Object.entries(loginUser)) {
 		if (value == 0) {
 			return res.status(400).json({ error: `Please enter a ${key}` });
@@ -29,7 +28,6 @@ authRouter.post('/', jsonParser, (req, res, next) => {
 						.json({ error: 'Incorrect user name or password' });
 				const sub = dbUser.user_name;
 				const payload = { user_id: dbUser.id };
-				console.log(dbUser);
 				res.send({
 					user: dbUser,
 					authToken: AuthService.createJwt(sub, payload)

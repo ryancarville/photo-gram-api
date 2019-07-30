@@ -6,7 +6,6 @@ landingPageRouter.get('/', (req, res, next) => {
 	const db = req.app.get('db');
 	LandingPageService.getLandingPage(db)
 		.then(lp => {
-			console.log(lp);
 			res.status(200).json(lp);
 		})
 		.catch(next);

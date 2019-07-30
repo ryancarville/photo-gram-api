@@ -26,7 +26,6 @@ userRouter
 					photoGramData.albums = albums.map(album =>
 						UserService.serializeAlbums(album)
 					);
-					console.log(photoGramData);
 					res.json(photoGramData);
 				})
 			)
