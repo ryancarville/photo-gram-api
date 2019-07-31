@@ -1,11 +1,11 @@
 const xss = require('xss');
 
 const UserService = {
-	getUserInfo(db, user_id) {
+	getUserInfo(db, id) {
 		return db
 			.from('photogram_users AS userInfo')
-			.select('id', 'full_name', 'profile_img_url')
-			.where({ id: user_id });
+			.select('id', 'full_name', 'user_name', 'profile_img_url', 'date_created')
+			.where({ id });
 	},
 	updateUserInfo(db, id, newInfo) {
 		return db

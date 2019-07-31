@@ -38,7 +38,10 @@ uploadRouter
 					.location(path.posix.join(req.originalUrl, `/${image.id}`))
 					.json(UploadService.serializeImage(image))
 			)
-			.catch(next);
+			.catch(err => {
+				console.log(err);
+				next(err);
+			});
 	});
 
 module.exports = uploadRouter;

@@ -29,11 +29,14 @@ authRouter.post('/', jsonParser, (req, res, next) => {
 				const sub = dbUser.user_name;
 				const payload = { user_id: dbUser.id };
 				res.send({
-					user: dbUser,
+					user_id: dbUser.id,
 					authToken: AuthService.createJwt(sub, payload)
 				});
 			});
 		})
-		.catch(next);
+		.catch(err => {
+			console.log(err);
+			next(err);
+		});
 });
 module.exports = authRouter;

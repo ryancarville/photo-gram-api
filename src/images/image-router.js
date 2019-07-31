@@ -14,7 +14,10 @@ imageRouter
 			.then(images =>
 				res.json(images.map(img => ImageService.serializeImage(img)))
 			)
-			.catch(next);
+			.catch(err => {
+				console.log(err);
+				next(err);
+			});
 	})
 	.post((req, res, next) => {
 		const {
@@ -47,7 +50,10 @@ imageRouter
 					.location(path.posix.join(req.originalUrl, `/${image.id}`))
 					.json(ImageService.serializeImage(image))
 			)
-			.catch(next);
+			.catch(err => {
+				console.log(err);
+				next(err);
+			});
 	});
 
 imageRouter
@@ -80,14 +86,20 @@ imageRouter
 			.then(nuwRowsAffected => {
 				res.status(202).json(nuwRowsAffected);
 			})
-			.catch(next);
+			.catch(err => {
+				console.log(err);
+				next(err);
+			});
 	})
 	.delete((req, res, next) => {
 		const imageId = req.params.image_id;
 		const db = req.app.get('db');
 		ImageService.deleteImage(db, imageId)
 			.then(nuwRowsAffected => res.status(202).json(nuwRowsAffected))
-			.catch(next);
+			.catch(err => {
+				console.log(err);
+				next(err);
+			});
 	});
 
 module.exports = imageRouter;

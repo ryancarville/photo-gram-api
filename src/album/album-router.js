@@ -18,7 +18,10 @@ albumRouter
 					.location(path.posix.join(req.originalUrl + `/${album.id}`))
 					.json(AlubmService.serializeAlbum(album))
 			)
-			.catch(next);
+			.catch(err => {
+				console.log(err);
+				next(err);
+			});
 	});
 
 albumRouter
@@ -30,14 +33,20 @@ albumRouter
 
 		AlubmService.getAlbumImages(db, user_id, album_id)
 			.then(images => res.json(images.map(AlubmsService.serializeImage)))
-			.catch(next);
+			.catch(err => {
+				console.log(err);
+				next(err);
+			});
 	})
 	.delete((req, res, next) => {
 		const { album_id } = req.params;
 		const db = req.app.get('db');
 		AlubmService.deleteAlbum(db, album_id)
 			.then(nuwRowsAffected => res.status(202).json(nuwRowsAffected))
-			.catch(next);
+			.catch(err => {
+				console.log(err);
+				next(err);
+			});
 	});
 
 module.exports = albumRouter;

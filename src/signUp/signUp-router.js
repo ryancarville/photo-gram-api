@@ -38,6 +38,9 @@ signUpRouter.post('/', (req, res, next) => {
 				);
 			});
 		})
-		.catch(next);
+		.catch(err => {
+			console.log(err);
+			next(err);
+		});
 });
 module.exports = signUpRouter;

@@ -13,23 +13,32 @@ userRouter
 		UserService.getUserInfo(db, user_id)
 			.then(user => {
 				photoGramData.user = user;
+				console.log(photoGramData.user);
 			})
-			.then(
-				UserService.getAllImages(db, user_id).then(images => {
-					photoGramData.images = images.map(image =>
-						UserService.serializeImages(image)
-					);
-				})
-			)
-			.then(
-				UserService.getAllAlbums(db, user_id).then(albums => {
-					photoGramData.albums = albums.map(album =>
-						UserService.serializeAlbums(album)
-					);
-					res.json(photoGramData);
-				})
-			)
-			.catch(next);
+			.then(() => {
+				return UserService.getAllImages(db, user_id);
+			})
+			.then(images => {
+				photoGramData.images = images.map(image =>
+					UserService.serializeImages(image)
+				);
+				console.log(photoGramData.images);
+			})
+			.then(() => {
+				return UserService.getAllAlbums(db, user_id);
+			})
+			.then(albums => {
+				photoGramData.albums = albums.map(album =>
+					UserService.serializeAlbums(album)
+				);
+				console.log(photoGramData.albums);
+				console.log(photoGramData);
+				res.status(200).json(photoGramData);
+			})
+			.catch(err => {
+				console.log(err);
+				next(err);
+			});
 	})
 	.patch((req, res, next) => {
 		const { full_name, user_name, profile_img_url } = req.body;
@@ -46,7 +55,10 @@ userRouter
 				.then(user => {
 					return res.status(201).json(UserService.serializeUser(user));
 				})
-				.catch(next);
+				.catch(err => {
+					console.log(err);
+					next(err);
+				});
 		}
 	});
 

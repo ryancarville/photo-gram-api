@@ -8,7 +8,10 @@ landingPageRouter.get('/', (req, res, next) => {
 		.then(lp => {
 			res.status(200).json(lp);
 		})
-		.catch(next);
+		.catch(err => {
+			console.log(err);
+			next(err);
+		});
 });
 
 module.exports = landingPageRouter;
