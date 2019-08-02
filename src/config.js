@@ -5,5 +5,8 @@ module.exports = {
 	DB_URL:
 		process.env.DATABASE_URL || 'postgresql://ryancarville@127.0.0.1/photoGram',
 	JWT_SECRET: process.env.JWT_SECRET || 'thisIsMyJWTSecret',
-	JWT_EXPIRY: process.env.JWT_EXPIRY || '1200000'
+	JWT_EXPIRY: process.env.JWT_EXPIRY || '1200000',
+	TEST_DB_URL:
+		process.env.TEST_DB_URL ||
+		'postgresql://ryancarville@127.0.0.1/photoGramTest'
 };

@@ -53,11 +53,11 @@ describe.only('User Endpoints', () => {
 					.expect(200)
 					.expect(res => {
 						expect(res.body.user.id).to.eql(expectedUser.id);
-						expect(res.body.full_name).to.eql(expectedUser.full_name);
-						expect(res.body.user_name).to.eql(expectedUser.user_name);
-						expect(res.body).to.have.property('profile_img_url');
-						expect(res.body).to.eql(expectedImages);
-						expect(res.body).to.eql(expectedAlbums);
+						expect(res.body.user.full_name).to.eql(expectedUser.full_name);
+						expect(res.body.user.user_name).to.eql(expectedUser.user_name);
+						expect(res.body.user).to.have.property('profile_img_url');
+						expect(res.body.images).to.eql(expectedImages);
+						expect(res.body.albums).to.eql(expectedAlbums);
 					});
 			});
 		});
@@ -65,10 +65,10 @@ describe.only('User Endpoints', () => {
 	describe('PATCH /user/:user_id', () => {
 		context('Given user with images in the db', () => {
 			const { testUsers } = helpers.makePhotoGramFixtures();
+			const testUser = testUsers[0];
 			beforeEach('insert users into db', () => {
 				helpers.seedUsers(db, testUsers);
 			});
-			const testUser = testUsers[0];
 
 			it(`responds 400 required error with request body empty`, () => {
 				const updateInfoAttempBody = {
@@ -85,7 +85,7 @@ describe.only('User Endpoints', () => {
 						error: `Request must contain at least 'full_name', 'user_name' or 'profile_img_url'`
 					});
 			});
-			it(`responds 201 and serialize new user info`, () => {
+			it(`responds 201 and xss serialize new user info`, () => {
 				const updateInfoAttempBody = {
 					user_name: 'new-user-name',
 					full_name: 'new-full_name',
