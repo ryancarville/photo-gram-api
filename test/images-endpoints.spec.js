@@ -2,7 +2,7 @@ const knex = require('knex');
 const app = require('../src/app');
 const helpers = require('./test-helpers');
 
-describe.only('Images Endpoints', () => {
+describe('Images Endpoints', () => {
 	let db;
 
 	const { testUsers, testImages, testAlbums } = helpers.makePhotoGramFixtures();
