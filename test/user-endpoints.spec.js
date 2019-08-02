@@ -2,8 +2,9 @@ const knex = require('knex');
 const app = require('../src/app');
 const helpers = require('./test-helpers');
 
-describe.only('User Endpoints', () => {
+describe('User Endpoints', () => {
 	let db;
+	const { testUsers, testImages, testAlbums } = helpers.makePhotoGramFixtures();
 
 	before('make knex instance', () => {
 		db = knex({
@@ -21,15 +22,12 @@ describe.only('User Endpoints', () => {
 
 	describe('GET /user/:user_id', () => {
 		context('Given users, albums and images in db', () => {
-			const {
-				testUsers,
-				testImages,
-				testAlbums
-			} = helpers.makePhotoGramFixtures();
-			before('insert users, albums and images', () => {
-				helpers.seedAllTables(db, testUsers, testImages, testAlbums);
+			before(() => {
+				helpers
+					.seedAllTables(db, testUsers, testImages, testAlbums)
+					.then(() => {});
 			});
-			it('responds 200 with users info, images and albums', () => {
+			it('responds 200 with users info, images and albums', done => {
 				const testUser = testUsers[1];
 
 				const expectedUser = helpers.makeExpectedUser(testUser);
@@ -45,7 +43,7 @@ describe.only('User Endpoints', () => {
 				expectedAlbums = expectedAlbums.forEach(alb =>
 					helpers.makeExpectedAlbum(testUsers, alb)
 				);
-
+				done();
 				return supertest(app)
 					.get(`/user/${testUser.id}`)
 					.set('authorization', helpers.makeAuthHeader(testUser))
@@ -66,17 +64,14 @@ describe.only('User Endpoints', () => {
 		context('Given user with images in the db', () => {
 			const { testUsers } = helpers.makePhotoGramFixtures();
 			const testUser = testUsers[0];
-			beforeEach('insert users into db', () => {
-				helpers.seedUsers(db, testUsers);
-			});
-
-			it(`responds 400 required error with request body empty`, () => {
+			beforeEach(() => helpers.seedUsers(db, testUsers).done());
+			it(`responds 400 required error with request body empty`, done => {
 				const updateInfoAttempBody = {
 					user_name: '',
 					full_name: '',
 					profile_img_url: ''
 				};
-
+				done();
 				return supertest(app)
 					.patch(`/user/${testUser.id}`)
 					.set('authorization', helpers.makeAuthHeader(testUser))
@@ -85,7 +80,7 @@ describe.only('User Endpoints', () => {
 						error: `Request must contain at least 'full_name', 'user_name' or 'profile_img_url'`
 					});
 			});
-			it(`responds 201 and xss serialize new user info`, () => {
+			it(`responds 201 and xss serialize new user info`, done => {
 				const updateInfoAttempBody = {
 					user_name: 'new-user-name',
 					full_name: 'new-full_name',
@@ -97,7 +92,7 @@ describe.only('User Endpoints', () => {
 					full_name: 'new-full_name',
 					profile_img_url: 'https://www.newImage.com'
 				};
-
+				done();
 				return supertest(app)
 					.patch(`/user/${testUser.id}`)
 					.set('authorization', helpers.makeAuthHeader(testUser))

@@ -25,10 +25,11 @@ describe('Albums endpoints', () => {
 		before('inset Albums', () => {
 			helpers.seedAllTables(db, testUsers, testImages, testAlbums);
 		});
-		it(`responds 201 with album data`, () => {
+		it(`responds 201 with album data`, done => {
 			const validAlbum = testAlbums[0];
 			const expectedAlbum = helpers.makeExpectedAlbum(testUsers, validAlbum);
 			const testUser = testUsers[0];
+			done();
 			return supertest(app)
 				.post('/albums/addAlbum')
 				.set('authorization', helpers.makeAuthHeader(testUser))
@@ -45,14 +46,14 @@ describe('Albums endpoints', () => {
 			before('insert Albums', () => {
 				helpers.seedAllTables(db, testUsers, testImages, testAlbums);
 			});
-			it(`responds 401 'Album doesn't exsit`, () => {
+			it(`responds 401 'Album doesn't exsit`, done => {
 				const invalidAlbum = {
 					id: 12334343,
 					album_name: 'test-album-name',
 					img_url: 'http://testalbum.com',
 					user_id: testUsers[0].id
 				};
-
+				done();
 				return supertest(app)
 					.delete(`/albums/${invalidAlbum.id}`)
 					.set('authorization', helpers.makeAuthHeader(testUsers[0]))

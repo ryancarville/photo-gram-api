@@ -85,14 +85,16 @@ describe('Protected endpoints', () => {
 
 	protectedEndpoints.forEach(endpoint => {
 		describe(endpoint.name, () => {
-			it(`responds 401 'Missing bearer token' when no bearer token`, () => {
+			it(`responds 401 'Missing bearer token' when no bearer token`, done => {
+				done();
 				return endpoint
 					.method(endpoint.path)
 					.expect(401, { error: `Missing bearer token` });
 			});
-			it(`responds 401 'Unauthorized request' when invalid JWT token`, () => {
+			it(`responds 401 'Unauthorized request' when invalid JWT token`, done => {
 				const validUser = testUsers[0];
 				const invalidSecret = 'bad-secret';
+				done();
 				return endpoint
 					.method(endpoint.path)
 					.set(
@@ -101,8 +103,9 @@ describe('Protected endpoints', () => {
 					)
 					.expect(401, { error: 'Unauthorized request' });
 			});
-			it(`responds 401 'Unauthorized request' when invalid sub paylod`, () => {
+			it(`responds 401 'Unauthorized request' when invalid sub paylod`, done => {
 				const invalidUser = { user_name: 'bad-user-name', id: 1 };
+				done();
 				return endpoint
 					.method(endpoint.path)
 					.set('authorization', helpers.makeAuthHeader(invalidUser))

@@ -19,13 +19,9 @@ describe('Auth Endpoints', () => {
 
 	after('discontect from db', () => db.destroy());
 
-	before('cleanup tables', () => {
-		helpers.cleanTables(db);
-	});
+	before('cleanup tables', () => helpers.cleanTables(db));
 
-	afterEach('cleanup tables', () => {
-		helpers.cleanTables(db);
-	});
+	afterEach('cleanup tables', () => helpers.cleanTables(db));
 
 	describe('POST /login', () => {
 		beforeEach('insert users', () => helpers.seedUsers(db, testUsers));
@@ -38,9 +34,9 @@ describe('Auth Endpoints', () => {
 				password: testUser.password
 			};
 
-			it(`responds with 400 when required ${field} is missing`, () => {
+			it(`responds with 400 when required ${field} is missing`, done => {
 				delete loginAttempBody[field];
-
+				done();
 				return supertest(app)
 					.post('/login')
 					.send(loginAttempBody)
@@ -48,28 +44,28 @@ describe('Auth Endpoints', () => {
 			});
 		});
 
-		it(`responds 400 'invalid user name or password' when bad user name`, () => {
+		it(`responds 400 'invalid user name or password' when bad user name`, done => {
 			const userInvalidUser = { user_name: 'user-not', password: 'existy' };
-
+			done();
 			return supertest(app)
 				.post('/login')
 				.send(userInvalidUser)
 				.expect(400, { error: `Invalid user name or password` });
 		});
 
-		it(`responds 400 'invalid user name or password' when bad password`, () => {
+		it(`responds 400 'invalid user name or password' when bad password`, done => {
 			const userInvalidUser = {
 				user_name: testUser.user_name,
 				password: 'incorrect'
 			};
-
+			done();
 			return supertest(app)
 				.post('/login')
 				.send(userInvalidUser)
 				.expect(400, { error: `Invalid user name or password` });
 		});
 
-		it(`responds 200 and JWT auth token using secret when using valid credentials`, () => {
+		it(`responds 200 and JWT auth token using secret when using valid credentials`, done => {
 			const userValidCreds = {
 				user_name: testUser.user_name,
 				password: testUser.password
@@ -83,6 +79,7 @@ describe('Auth Endpoints', () => {
 					algorithm: 'HS256'
 				}
 			);
+			done();
 			return supertest(app)
 				.post('/login')
 				.send(userValidCreds)

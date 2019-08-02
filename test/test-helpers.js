@@ -225,14 +225,16 @@ function cleanTables(db) {
 }
 
 function seedUsers(db, users) {
-	const preppedUser = users.map(usr => ({
-		...usr,
-		password: bcrypt.hashSync(usr.password, 1)
+	const preppedUsers = users.map(user => ({
+		...user,
+		password: bcrypt.hashSync(user.password, 1)
 	}));
+
 	return db
 		.into('photogram_users')
-		.insert(preppedUser)
+		.insert(preppedUsers)
 		.then(() =>
+			//update the auto sequence to stay in sunc
 			db.raw(`SELECT setval('photogram_users_id_seq', ?)`, [
 				users[users.length - 1].id
 			])
@@ -264,8 +266,15 @@ function seedImages(db, images) {
 function seedAllTables(db, users, images, albums) {
 	return db.transaction(async trx => {
 		await seedUsers(trx, users);
-		await seedAlbums(trx, albums);
-		await seedImages(trx, images);
+		await trx.into('photogram_albums').insert(albums);
+		await trx.raw(`SELECT setval('photogram_albums_id_seq', ?)`, [
+			albums[albums.length - 1].id
+		]);
+
+		await trx.into('photogram_images').insert(images);
+		await trx.raw(`SELECT setval('photogram_images_id_seq', ?)`, [
+			images[images.length - 1].id
+		]);
 	});
 }
 
@@ -287,7 +296,6 @@ function makeAuthHeader(user, secret = process.env.JWT_SECRET) {
 		expiresIn: process.env.JWT_EXPIRY,
 		algorithm: 'HS256'
 	});
-	console.log(token);
 
 	return `Bearer ${token}`;
 }

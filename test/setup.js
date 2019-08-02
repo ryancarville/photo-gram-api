@@ -7,6 +7,6 @@ require('dotenv').config();
 const { expect } = require('chai');
 const supertest = require('supertest');
 
-process.env.TEST_DB_URL || 'postgresql://ryancarville@localhost/photoGramTest';
+process.env.TEST_DB_URL || 'postgresql://postgres@localhost/photoGramTest';
 global.expect = expect;
 global.supertest = supertest;
