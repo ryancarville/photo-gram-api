@@ -23,6 +23,9 @@ describe('Images Endpoints', () => {
 
 	describe('PATCH /images/:user_id', () => {
 		context('Given request does not contain required data', () => {
+			beforeEach(() => {
+				helpers.seedAllTables(db, testUsers, testImages, testAlbums);
+			});
 			it(`responds 401 required data`, done => {
 				const invalidPatch = {
 					caption: '',
@@ -70,6 +73,9 @@ describe('Images Endpoints', () => {
 		context(`Given no image found`, () => {
 			const testUser = testUsers[0];
 			const testAlbum = testAlbums[0];
+			beforeEach(() => {
+				helpers.seedAllTables(db, testUsers, testImages, testAlbums);
+			});
 			it(`responds 401 no image found`, done => {
 				const invalidImage = {
 					id: 123423,
