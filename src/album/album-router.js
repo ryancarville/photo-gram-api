@@ -27,22 +27,27 @@ albumRouter
 albumRouter
 	.route('/:album_id')
 	.all(requireAuth)
-	.get((req, res, next) => {
-		const db = req.app.get('db');
-		const { user_id, album_id } = req.body;
+	// .get((req, res, next) => {
+	// 	const db = req.app.get('db');
+	// 	const { user_id, album_id } = req.body;
 
-		AlubmService.getAlbumImages(db, user_id, album_id)
-			.then(images => res.json(images.map(AlubmsService.serializeImage)))
-			.catch(err => {
-				console.log(err);
-				next(err);
-			});
-	})
+	// 	AlubmService.getAlbumImages(db, user_id, album_id)
+	// 		.then(images => res.json(images.map(AlubmsService.serializeImage)))
+	// 		.catch(err => {
+	// 			console.log(err);
+	// 			next(err);
+	// 		});
+	// })
 	.delete((req, res, next) => {
 		const { album_id } = req.params;
 		const db = req.app.get('db');
 		AlubmService.deleteAlbum(db, album_id)
-			.then(nuwRowsAffected => res.status(202).json(nuwRowsAffected))
+			.then(nuwRowsAffected => {
+				if (!numRowsAffected) {
+					res.status(401).json({ error: `Album doesn't exsit` });
+				}
+				res.status(202).json(nuwRowsAffected);
+			})
 			.catch(err => {
 				console.log(err);
 				next(err);

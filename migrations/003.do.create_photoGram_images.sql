@@ -3,7 +3,7 @@ CREATE TABLE photoGram_images (
     img_url TEXT NOT NULL,
     caption TEXT,
     tags TEXT,
-    user_id INTEGER REFERENCES photoGram_users(id) ON DELETE CASCADE,
+    user_id INTEGER REFERENCES photoGram_users(id) ON DELETE CASCADE NOT NULL,
     album_id INTEGER REFERENCES photoGram_albums(id) ON DELETE CASCADE,
     date_created DATE DEFAULT now() NOT NULL
 )

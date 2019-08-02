@@ -3,8 +3,8 @@ const xss = require('xss');
 const UserService = {
 	getUserInfo(db, id) {
 		return db
-			.from('photogram_users AS userInfo')
-			.select('id', 'full_name', 'user_name', 'profile_img_url', 'date_created')
+			.from('photogram_users')
+			.select('id', 'full_name', 'user_name', 'profile_img_url')
 			.where({ id });
 	},
 	updateUserInfo(db, id, newInfo) {
