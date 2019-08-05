@@ -8,7 +8,7 @@ userRouter
 	.all(requireAuth)
 	.get((req, res, next) => {
 		let photoGramData = {};
-		const user_id = req.params.user_id;
+		const user_id = req.user.id;
 		const db = req.app.get('db');
 		UserService.getUserInfo(db, user_id)
 			.then(user => {
