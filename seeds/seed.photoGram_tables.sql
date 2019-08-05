@@ -28,7 +28,7 @@ VALUES
 INSERT INTO photoGram_landingPage
     (mobile_Img_Url, desktop_Img_Url)
 VALUES
-    ('http://beardystudios.com/Bloc_Capstone/photoGram/images/landingPage-example.png',
-    'http://beardystudios.com/Bloc_Capstone/photoGram/images/desktop-example.png');
+    ('https://beardystudios.com/Bloc_Capstone/photoGram/images/landingPage-example.png',
+    'https://beardystudios.com/Bloc_Capstone/photoGram/images/desktop-example.png');
     
 COMMIT;
