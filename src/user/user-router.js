@@ -43,7 +43,7 @@ userRouter
 		const user_id = req.params.user_id;
 		const db = req.app.get('db');
 		for (const [key, value] of Object.entries(userInfoUpdate)) {
-			if (key || value == 0) {
+			if (value === '') {
 				return res.status(400).json({
 					error: `Request must contain at least 'full_name', 'user_name' or 'profile_img_url'`
 				});

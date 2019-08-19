@@ -30,7 +30,7 @@ app.use('/login', authRouter);
 app.use('/user', userRouter);
 app.use('/albums', albumRouter);
 app.use('/images', imageRouter);
-app.use('/upload', imageRouter);
+app.use('/upload', uploadRouter);
 
 app.use(function errorHandler(error, req, res, next) {
 	let response;
