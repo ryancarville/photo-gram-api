@@ -11,8 +11,15 @@ const AlbumsService = {
 				return row[0];
 			});
 	},
+	updateAlbum(db, newAlbumData) {
+		return db
+			.into('photogram_albums')
+			.where({ id: newAlbumData.id })
+			.update(newAlbumData);
+	},
 	deleteAlbum(db, id) {
-		return db('photogram_albums')
+		return db
+			.into('photogram_albums')
 			.where({ id })
 			.delete();
 	},

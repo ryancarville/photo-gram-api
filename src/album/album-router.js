@@ -27,26 +27,35 @@ albumRouter
 albumRouter
 	.route('/:album_id')
 	.all(requireAuth)
-	// .get((req, res, next) => {
-	// 	const db = req.app.get('db');
-	// 	const { user_id, album_id } = req.body;
-
-	// 	AlubmService.getAlbumImages(db, user_id, album_id)
-	// 		.then(images => res.json(images.map(AlubmsService.serializeImage)))
-	// 		.catch(err => {
-	// 			console.log(err);
-	// 			next(err);
-	// 		});
-	// })
 	.delete((req, res, next) => {
 		const { album_id } = req.params;
 		const db = req.app.get('db');
 		AlubmService.deleteAlbum(db, album_id)
-			.then(nuwRowsAffected => {
+			.then(numRowsAffected => {
 				if (!numRowsAffected) {
 					res.status(401).json({ error: `Album doesn't exsit` });
 				}
-				res.status(202).json(nuwRowsAffected);
+				res.status(202).json(numRowsAffected);
+			})
+			.catch(err => {
+				console.log(err);
+				next(err);
+			});
+	});
+
+albumRouter
+	.route('/editAlbum/:album_id')
+	.all(requireAuth)
+	.patch((req, res, next) => {
+		const { id, album_name, img_url } = req.body;
+		const newAlbumData = { id, album_name, img_url };
+		const db = req.app.get('db');
+		AlubmService.updateAlbum(db, newAlbumData)
+			.then(album => {
+				if (!album) {
+					res.status(401).json({ error: 'Something went wrong' });
+				}
+				res.status(202).json(album);
 			})
 			.catch(err => {
 				console.log(err);
