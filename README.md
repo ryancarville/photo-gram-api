@@ -1,6 +1,13 @@
 # PhotoGram API
 
-This is a RESTful API Express Server for the PhotoGram App Client.  
+This is a RESTful API Express Server for the PhotoGram App Client.
+
+## Technologies
+
+<img src='https://cdn.iconscout.com/icon/free/png-512/nodejs-2-226035.png' width='25px'>
+Node.js
+<img src='https://raw.githubusercontent.com/voodootikigod/logo.js/master/js.png' width='15px'>
+JavaScript
 
 ## Scripts
 
